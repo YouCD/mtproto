@@ -9,7 +9,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/xelaj/mtproto/internal/math"
+	"github.com/YouCD/mtproto/internal/math"
 )
 
 func TestSplitPQ(t *testing.T) {

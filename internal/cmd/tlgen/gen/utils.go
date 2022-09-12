@@ -1,14 +1,13 @@
 package gen
 
 import (
+	"github.com/xelaj/go-dry"
 	"strings"
 	"unicode"
 
+	"github.com/YouCD/mtproto/internal/cmd/tlgen/tlparser"
 	"github.com/dave/jennifer/jen"
 	"github.com/iancoleman/strcase"
-	"github.com/xelaj/go-dry"
-	
-	"github.com/xelaj/mtproto/internal/cmd/tlgen/tlparser"
 )
 
 func createParamsStructFromMethod(method tlparser.Method) tlparser.Object {

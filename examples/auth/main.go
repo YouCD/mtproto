@@ -8,13 +8,13 @@ import (
 	"strings"
 	"time"
 
+	"github.com/YouCD/mtproto"
+	"github.com/YouCD/mtproto/telegram"
 	"github.com/k0kubun/pp"
 	"github.com/pkg/errors"
 	"github.com/xelaj/go-dry"
-	"github.com/xelaj/mtproto"
-	"github.com/xelaj/mtproto/telegram"
 
-	utils "github.com/xelaj/mtproto/examples/example_utils"
+	utils "github.com/YouCD/mtproto/examples/example_utils"
 )
 
 func main() {

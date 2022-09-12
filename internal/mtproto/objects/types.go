@@ -13,8 +13,8 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/xelaj/mtproto/internal/encoding/tl"
-	"github.com/xelaj/mtproto/internal/mtproto/messages"
+	"github.com/YouCD/mtproto/internal/encoding/tl"
+	"github.com/YouCD/mtproto/internal/mtproto/messages"
 )
 
 // TYPES
@@ -262,10 +262,12 @@ func (*NewSessionCreated) CRC() uint32 {
 	return 0x9ec20908 //nolint:gomnd not magic
 }
 
-//! исключение из правил: это оказывается почти-вектор, т.к.
-//  записан как `msg_container#73f1f8dc messages:vector<%Message> = MessageContainer;`
-//  судя по всему, <%Type> означает, что может это неявный вектор???
-//! возможно разработчики в этот момент поехаи кукухой, я не знаю правда
+// ! исключение из правил: это оказывается почти-вектор, т.к.
+//
+//	записан как `msg_container#73f1f8dc messages:vector<%Message> = MessageContainer;`
+//	судя по всему, <%Type> означает, что может это неявный вектор???
+//
+// ! возможно разработчики в этот момент поехаи кукухой, я не знаю правда
 type MessageContainer []*messages.Encrypted
 
 func (*MessageContainer) CRC() uint32 {

@@ -1,4 +1,4 @@
-module github.com/xelaj/mtproto/internal/cmd/tlgen
+module github.com/YouCD/mtproto/internal/cmd/tlgen
 
 go 1.15
 
@@ -10,5 +10,5 @@ require (
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.6.1
-	github.com/xelaj/go-dry v0.0.0-20201114160035-4f99d0d557b8
+	github.com/xelaj/go-dry v0.0.0-20210621215431-21c77821487c
 )

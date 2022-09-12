@@ -6,17 +6,17 @@
 package telegram
 
 import (
-	"net"
 	"reflect"
 	"runtime"
 	"strconv"
+	"strings"
 
 	"github.com/pkg/errors"
 	"github.com/xelaj/errs"
 	dry "github.com/xelaj/go-dry"
 
-	"github.com/xelaj/mtproto"
-	"github.com/xelaj/mtproto/internal/keys"
+	"github.com/YouCD/mtproto"
+	"github.com/YouCD/mtproto/internal/keys"
 )
 
 type Client struct {
@@ -117,11 +117,26 @@ func NewClient(c ClientConfig) (*Client, error) { //nolint: gocritic arg is not 
 
 	dcList := make(map[int]string)
 	for _, dc := range config.DcOptions {
+		//if dc.Cdn {
+		//	continue
+		//}
+		//
+		//dcList[int(dc.ID)] = net.JoinHostPort(dc.IpAddress, strconv.Itoa(int(dc.Port)))
+		//
 		if dc.Cdn {
 			continue
 		}
+		if strings.Contains(dc.IpAddress, ":") {
+			// ipv6
+			continue
+		}
+		_, ok := dcList[int(dc.ID)]
+		if ok {
+			continue
+		}
 
-		dcList[int(dc.ID)] = net.JoinHostPort(dc.IpAddress, strconv.Itoa(int(dc.Port)))
+		dcList[int(dc.ID)] = dc.IpAddress + ":" + strconv.Itoa(int(dc.Port))
+
 	}
 	client.SetDCList(dcList)
 	return client, nil
